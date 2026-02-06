@@ -56,4 +56,42 @@ window.addEventListener("DOMContentLoaded", () => {
             statusEl.innerText = "Connection failed";
         }
     });
+
+    document.getElementById("create").addEventListener("click", async () => {
+        try {
+            const title = document.getElementById("title").value;
+            const candidates = document
+                .getElementById("candidates")
+                .value.split(",")
+                .map(c => c.trim());
+            const duration = document.getElementById("duration").value;
+
+            const tx = await votingContract.createElection(
+                title,
+                candidates,
+                duration
+            );
+            await tx.wait();
+
+            alert("Election created successfully");
+        } catch (err) {
+            console.error(err);
+            alert("Election creation failed");
+        }
+    });
+
+    document.getElementById("vote").addEventListener("click", async () => {
+        try {
+            const electionId = document.getElementById("electionId").value;
+            const candidateId = document.getElementById("candidateId").value;
+
+            const tx = await votingContract.vote(electionId, candidateId);
+            await tx.wait();
+
+            alert("Vote cast successfully");
+        } catch (err) {
+            console.error(err);
+            alert("Voting failed");
+        }
+    });
 });
