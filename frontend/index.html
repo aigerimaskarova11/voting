@@ -1,76 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"/>
-    <title>Decentralized Voting DApp</title>
-    <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-    />
-</head>
+  <meta charset="UTF-8">
+  <title>Decentralized Voting DApp</title>
 
+  <!-- Bootstrap -->
+  <link
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    rel="stylesheet"
+  >
+</head>
 <body class="bg-light">
 
 <div class="container py-4">
-    <h1 class="text-center mb-4">Decentralized Voting System</h1>
-    <div class="card mb-4">
-        <div class="card-body text-center">
-            <button id="connect" type="button" class="btn btn-primary mb-2">
-                Connect MetaMask
-            </button>
-            <p id="wallet" class="fw-bold text-primary">Not connected</p>
-            <p id="network" class="text-muted"></p>
-            <p id="status" class="text-danger"></p>
-        </div>
-    </div>
+  <h1 class="text-center mb-4">Decentralized Voting System</h1>
 
-    <div class="card mb-4">
-        <div class="card-header fw-bold">Create Election</div>
-        <div class="card-body">
-            <input id="title" class="form-control mb-2" placeholder="Election title"/>
-            <input
-                    id="candidates"
-                    class="form-control mb-2"
-                    placeholder="Candidates (comma separated)"
-            />
-            <input
-                    id="duration"
-                    type="number"
-                    class="form-control mb-3"
-                    placeholder="Duration (seconds)"
-            />
-            <button id="create" type="button" class="btn btn-success">
-                Create Election
-            </button>
-        </div>
+  <!-- Connect Wallet --> 
+  <div class="card mb-4">
+    <div class="card-body text-center">
+      <button id="connect" class="btn btn-primary mb-2">Connect MetaMask</button>
+      <p id="wallet" class="fw-bold text-primary">Not connected</p>
+      <p id="network" class="text-muted"></p>
+      <p id="status" class="text-danger"></p>
     </div>
+  </div>
 
-    <div class="card">
-        <div class="card-header fw-bold">Vote</div>
-        <div class="card-body">
-            <input
-                    id="electionId"
-                    type="number"
-                    class="form-control mb-2"
-                    placeholder="Election ID"
-            />
-            <input
-                    id="candidateId"
-                    type="number"
-                    class="form-control mb-3"
-                    placeholder="Candidate ID"
-            />
-            <button id="vote" type="button" class="btn btn-warning">
-                Cast Vote
-            </button>
-            <button id="showElection" type="button" class="btn btn-info mt-2">
-                Show Election Info
-            </button>
-        </div>
+  <!-- Create Election -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">Create Election</div>
+    <div class="card-body">
+      <input id="title" class="form-control mb-2" placeholder="Election title">
+      <input id="candidate1" class="form-control mb-2" placeholder="Candidate 1">
+      <input id="candidate2" class="form-control mb-2" placeholder="Candidate 2">
+      <input id="duration" type="number" class="form-control mb-3" placeholder="Duration (seconds)">
+      <button id="create" class="btn btn-success">Create Election</button>
     </div>
+  </div>
+
+  <!-- Vote -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">Vote</div>
+    <div class="card-body">
+      <input id="viewElectionId" type="number" class="form-control mb-2" placeholder="Election ID">
+      <input id="candidateId" type="number" class="form-control mb-3" placeholder="Candidate ID (0 or 1)">
+      <button id="vote" class="btn btn-warning">Cast Vote</button>
+    </div>
+  </div>
+
+  <!-- View Election -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">View Election</div>
+    <div class="card-body">
+      <button id="viewElection" class="btn btn-info mb-3">View Election</button>
+      <div id="electionInfo" style="display:none;">
+        <p><strong>Title:</strong> <span id="electionTitle"></span></p>
+        <p><strong>Deadline:</strong> <span id="electionDeadline"></span></p>
+        <ul id="candidateList"></ul>
+        <ul id="votesList"></ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- VoteToken Balance -->
+  <div class="card">
+    <div class="card-header fw-bold">Your VoteToken Balance</div>
+    <div class="card-body">
+      <p id="tokenBalance">0 VOTE</p>
+      <button id="refreshBalance" class="btn btn-secondary">Refresh Balance</button>
+    </div>
+  </div>
+
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
