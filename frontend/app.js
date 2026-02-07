@@ -13,7 +13,6 @@ const VOTING_ABI = [
     "function getVotes(uint256,uint256) view returns (uint256)",
     "function voteToken() view returns (address)"
 ];
-
     const LOCAL_CHAIN_ID = 31337;
 
     const connectBtn = document.getElementById("connect");
