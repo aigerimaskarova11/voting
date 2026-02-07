@@ -6,10 +6,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
     const VOTING_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
 
-    const VOTING_ABI = [
-        "function createElection(string,string[],uint256)",
-        "function vote(uint256,uint256)"
-    ];
+const VOTING_ABI = [
+    "function createElection(string,string[],uint256)",
+    "function vote(uint256,uint256)",
+    "function getElection(uint256) view returns (string title, string[] memory candidates, uint256 deadline, bool finalized)",
+    "function getVotes(uint256,uint256) view returns (uint256)",
+    "function voteToken() view returns (address)"
+];
 
     const LOCAL_CHAIN_ID = 31337;
 
