@@ -2,65 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Decentralized Voting DApp</title>
-
-  <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-  >
+  <title>Crowdfunding + Voting DApp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
 
 <div class="container py-4">
-  <h1 class="text-center mb-4">Decentralized Voting System</h1>
+  <h1 class="text-center mb-4">🚀 Crowdfunding + Voting DApp</h1>
 
+  <!-- Connect Wallet -->
   <div class="card mb-4">
     <div class="card-body text-center">
       <button id="connect" class="btn btn-primary mb-2">Connect MetaMask</button>
       <p id="wallet" class="fw-bold text-primary">Not connected</p>
-      <p id="network" class="text-muted"></p>
       <p id="status" class="text-danger"></p>
     </div>
   </div>
 
+  <!-- Campaign Creation -->
   <div class="card mb-4">
-    <div class="card-header fw-bold">Create Election</div>
+    <div class="card-header fw-bold">Create Campaign</div>
     <div class="card-body">
-      <input id="title" class="form-control mb-2" placeholder="Election title">
-      <input id="candidate1" class="form-control mb-2" placeholder="Candidate 1">
-      <input id="candidate2" class="form-control mb-2" placeholder="Candidate 2">
-      <input id="duration" type="number" class="form-control mb-3" placeholder="Duration (seconds)">
-      <button id="create" class="btn btn-success">Create Election</button>
+      <input id="title" class="form-control mb-2" placeholder="Campaign title">
+      <input id="goal" class="form-control mb-2" placeholder="Goal (ETH)">
+      <input id="duration" class="form-control mb-2" placeholder="Duration (seconds)">
+      <input id="option1" class="form-control mb-2" placeholder="Vote Option 1">
+      <input id="option2" class="form-control mb-2" placeholder="Vote Option 2">
+      <button id="create" class="btn btn-success">Create Campaign</button>
     </div>
   </div>
 
+  <!-- Contribution Section -->
   <div class="card mb-4">
-    <div class="card-header fw-bold">Vote</div>
+    <div class="card-header fw-bold">Contribute</div>
     <div class="card-body">
-      <input id="viewElectionId" type="number" class="form-control mb-2" placeholder="Election ID">
-      <input id="candidateId" type="number" class="form-control mb-3" placeholder="Candidate ID (0 or 1)">
+      <input id="campaignId" class="form-control mb-2" placeholder="Campaign ID">
+      <input id="amount" class="form-control mb-2" placeholder="ETH amount">
+      <button id="contribute" class="btn btn-warning mb-2">Contribute</button>
+    </div>
+  </div>
+
+  <!-- Voting Section -->
+  <div class="card mb-4">
+    <div class="card-header fw-bold">Vote / View Options</div>
+    <div class="card-body">
+      <button id="viewOptions" class="btn btn-info mb-2">Load Campaign Options</button>
+      <ul id="optionsList" class="list-group mb-3"></ul>
+      <input id="optionVote" type="number" class="form-control mb-2" placeholder="Option ID (0 or 1)">
       <button id="vote" class="btn btn-warning">Cast Vote</button>
     </div>
   </div>
 
-  <div class="card mb-4">
-    <div class="card-header fw-bold">View Election</div>
-    <div class="card-body">
-      <button id="viewElection" class="btn btn-info mb-3">View Election</button>
-      <div id="electionInfo" style="display:none;">
-        <p><strong>Title:</strong> <span id="electionTitle"></span></p>
-        <p><strong>Deadline:</strong> <span id="electionDeadline"></span></p>
-        <ul id="candidateList"></ul>
-        <ul id="votesList"></ul>
-      </div>
-    </div>
-  </div>
-
-
+  <!-- Balance Section -->
   <div class="card">
-    <div class="card-header fw-bold">Your VoteToken Balance</div>
+    <div class="card-header fw-bold">Your Balances</div>
     <div class="card-body">
-      <p id="tokenBalance">0 VOTE</p>
+      <p id="ethBalance">ETH: 0</p>
+      <p id="tokenBalance">RWD: 0</p>
       <button id="refreshBalance" class="btn btn-secondary">Refresh Balance</button>
     </div>
   </div>
