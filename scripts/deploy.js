@@ -1,25 +1,18 @@
 const hre = require("hardhat");
 
 async function main() {
-    const VoteToken = await hre.ethers.getContractFactory("VoteToken");
-    const voteToken = await VoteToken.deploy();
-    await voteToken.waitForDeployment();
+    const RewardToken = await hre.ethers.getContractFactory("RewardToken");
+    const rewardToken = await RewardToken.deploy();
+    await rewardToken.waitForDeployment();
 
-    console.log("VoteToken deployed to:", await voteToken.getAddress());
+    const CrowdFundingVoting = await hre.ethers.getContractFactory("CrowdFundingVoting");
+    const crowdfunding = await CrowdFundingVoting.deploy(await rewardToken.getAddress());
+    await crowdfunding.waitForDeployment();
 
-    const VotingSystem = await hre.ethers.getContractFactory("VotingSystem");
-    const votingSystem = await VotingSystem.deploy(
-        await voteToken.getAddress()
-    );
-    await votingSystem.waitForDeployment();
+    await rewardToken.transferOwnership(await crowdfunding.getAddress());
 
-    console.log("VotingSystem deployed to:", await votingSystem.getAddress());
-
-    await voteToken.transferOwnership(await votingSystem.getAddress());
-    console.log("Ownership transferred to VotingSystem");
+    console.log("RewardToken:", await rewardToken.getAddress());
+    console.log("CrowdFundingVoting:", await crowdfunding.getAddress());
 }
 
-main().catch((error) => {
-    console.error(error);
-    process.exitCode = 1;
-});
+main().catch((err) => { console.error(err); process.exit(1); });
