@@ -76,6 +76,6 @@ npx serve frontend
 8. 
 ```bash
 	1. Connect to Metamask 
-	
+	2. Input the data in columns and see it working
 ```
 
