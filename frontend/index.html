@@ -1,69 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Crowdfunding + Voting DApp</title>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<meta charset="UTF-8">
+<title>Crowdfunding Voting DApp</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-
 <div class="container py-4">
-  <h1 class="text-center mb-4">Crowdfunding + Voting DApp</h1>
+<h1 class="text-center mb-4">Crowdfunding Voting DApp</h1>
 
 
-  <div class="card mb-4">
-    <div class="card-body text-center">
-      <button id="connect" class="btn btn-primary mb-2">Connect MetaMask</button>
-      <p id="wallet" class="fw-bold text-primary">Not connected</p>
-      <p id="status" class="text-danger"></p>
-    </div>
-  </div>
+<button id="connect" class="btn btn-primary mb-3">Connect MetaMask</button>
+<p id="wallet"></p>
+<p id="ethBalance"></p>
+<p id="tokenBalance"></p>
+
+<hr>
 
 
-  <div class="card mb-4">
-    <div class="card-header fw-bold">Create Campaign</div>
-    <div class="card-body">
-      <input id="title" class="form-control mb-2" placeholder="Campaign title">
-      <input id="goal" class="form-control mb-2" placeholder="Goal (ETH)">
-      <input id="duration" class="form-control mb-2" placeholder="Duration (seconds)">
-      <input id="option1" class="form-control mb-2" placeholder="Vote Option 1">
-      <input id="option2" class="form-control mb-2" placeholder="Vote Option 2">
-      <button id="create" class="btn btn-success">Create Campaign</button>
-    </div>
-  </div>
+<h4>Create Campaign (Two Candidates)</h4>
+<input id="title" class="form-control mb-2" placeholder="Campaign title">
+<input id="goal" class="form-control mb-2" placeholder="Goal in ETH">
+<input id="duration" class="form-control mb-2" placeholder="Duration (seconds)">
+<input id="option1" class="form-control mb-2" placeholder="Candidate 1">
+<input id="option2" class="form-control mb-2" placeholder="Candidate 2">
+<button id="create" class="btn btn-success mb-3">Create Campaign</button>
+
+<hr>
 
 
-  <div class="card mb-4">
-    <div class="card-header fw-bold">Contribute</div>
-    <div class="card-body">
-      <input id="campaignId" class="form-control mb-2" placeholder="Campaign ID">
-      <input id="amount" class="form-control mb-2" placeholder="ETH amount">
-      <button id="contribute" class="btn btn-warning mb-2">Contribute</button>
-    </div>
-  </div>
+<h4>All Campaigns</h4>
+<button id="listCampaigns" class="btn btn-secondary mb-2">List Campaigns</button>
+<div id="campaignList" class="mb-3"></div>
 
-  
-  <div class="card mb-4">
-    <div class="card-header fw-bold">Vote / View Options</div>
-    <div class="card-body">
-      <button id="viewOptions" class="btn btn-info mb-2">Load Campaign Options</button>
-      <ul id="optionsList" class="list-group mb-3"></ul>
-      <input id="optionVote" type="number" class="form-control mb-2" placeholder="Option ID (0 or 1)">
-      <button id="vote" class="btn btn-warning">Cast Vote</button>
-    </div>
-  </div>
+<hr>
 
-  <div class="card">
-    <div class="card-header fw-bold">Your Balances</div>
-    <div class="card-body">
-      <p id="ethBalance">ETH: 0</p>
-      <p id="tokenBalance">RWD: 0</p>
-      <button id="refreshBalance" class="btn btn-secondary">Refresh Balance</button>
-    </div>
-  </div>
+
+<h4>Contribute</h4>
+<input id="campaignId" class="form-control mb-2" placeholder="Campaign ID">
+<input id="amount" class="form-control mb-2" placeholder="ETH amount">
+<button id="contribute" class="btn btn-warning mb-3">Contribute</button>
+
+<hr>
+
+
+<h4>Vote</h4>
+<input id="voteCampaignId" class="form-control mb-2" placeholder="Campaign ID">
+<input id="voteOptionIndex" class="form-control mb-2" placeholder="Vote Option Index (0 or 1)">
+<button id="vote" class="btn btn-info mb-3">Vote</button>
+
+<hr>
+
+
+<h4>Vote Results</h4>
+<div id="voteResults"></div>
 
 </div>
-
 <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
 <script src="app.js"></script>
 </body>
