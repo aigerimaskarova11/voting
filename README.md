@@ -28,7 +28,7 @@ A blockchain-based voting system deployed on Ethereum test networks.
 ## How to Run
 1. Clone the repository
 ```bash
-git clone https://github.com/aigerimaskarova11/final_block_Aigerim_Sagi_Sabira.git
+git clone https://github.com/aigerimaskarova11/voting.git
 ```
 
 2. Install dependencies
@@ -49,7 +49,8 @@ npx hardhat run scripts/deploy.js --network localhost
 5. Copy the voting address into app.js
 
 ```bash
-const VOTING_ADDRESS = "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512";
+const CROWDFUNDING_ADDRESS = "0x959922bE3CAee4b8Cd9a407cc3ac1C251C2007B1";
+const TOKEN_ADDRESS = "0x0B306BF915C4d645ff596e518fAf3F9669b97016";
 ```
 
 6. Configure Metamask
@@ -75,14 +76,6 @@ npx serve frontend
 8. 
 ```bash
 	1. Connect to Metamask 
-	2. Create Election by:
-		1. Enter the title
-		2. candidates (separate by comma)
-		3. enter the duration of election
-	3.Test vote
-		1. Enter Clection ID
-		2. Enter Candidate ID
-		3. Click Cast Vote
-	4. You are going to receive VoteToken(ERC-20) for participation
+	
 ```
 
